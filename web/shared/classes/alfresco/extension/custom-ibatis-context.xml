@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+    <!-- MyBatis config for custom table -->
+    <bean id="customSqlSessionFactory" class="org.alfresco.ibatis.HierarchicalSqlSessionFactoryBean">
+        <property name="useLocalCaches" value="${mybatis.useLocalCaches}"/>
+        <property name="resourceLoader" ref="dialectResourceLoader"/>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation">
+            <value>classpath:alfresco/extension/ibatis/custom-SqlMapConfig.xml</value>
+        </property>
+    </bean>
+    
+    <bean id="customSqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="customSqlSessionFactory"/>
+    </bean>
+    
+    <bean id="customEntityDAO" class="jp.aegif.alfresco.study.repo.domain.CustomEntityDAOImpl">
+      <property name="sqlSessionTemplate" ref="customSqlSessionTemplate"/>
+   </bean>
+    
+</beans>

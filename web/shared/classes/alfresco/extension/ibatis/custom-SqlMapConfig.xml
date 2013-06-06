@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <typeAliases>
+        <typeAlias alias="CustomEntity" type="jp.aegif.alfresco.study.repo.domain.CustomEntity"/>
+    </typeAliases>
+    
+    <mappers>
+        <mapper resource="alfresco/extension/ibatis/#resource.dialect#/custom-SqlMap.xml"/>
+    </mappers>
+    
+</configuration>

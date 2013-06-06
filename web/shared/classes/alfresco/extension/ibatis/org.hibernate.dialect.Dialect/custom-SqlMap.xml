@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="alfresco.custom">
+
+   <insert id="insert_custom_entity" parameterType="CustomEntity" useGeneratedKeys="true" keyProperty="id">
+      insert into aegif_custom_table (run_date, user_id)
+      values (#{runDate}, #{userId})
+   </insert>
+
+   <select id="select_custom_entities_by_user" parameterType="CustomEntity" resultType="CustomEntity">
+      select id as id, run_date as runDate, user_id as userId
+      from aegif_custom_table
+      where user_id = #{userId}
+   </select>
+   
+</mapper>
